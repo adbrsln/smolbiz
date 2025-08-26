@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Owner of the business
+            $table->string('slug')->unique();
             $table->string('name');
             $table->string('legal_name')->nullable();
             $table->string('address_line_1')->nullable();

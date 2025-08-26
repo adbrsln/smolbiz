@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 class Business extends Model
 {
@@ -19,6 +20,7 @@ class Business extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'slug',
         'legal_name',
         'address_line_1',
         'address_line_2',
@@ -90,5 +92,19 @@ class Business extends Model
     public function defaultPaymentTerm(): BelongsTo
     {
         return $this->belongsTo(PaymentTerm::class, 'default_payment_term_id');
+    }
+
+     // Auto-generate slug when the business name is set
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($business) {
+            $business->slug = Str::slug($business->name);
+        });
+    }
+
+    public function getTenant(): Model
+    {
+        return $this;
     }
 }

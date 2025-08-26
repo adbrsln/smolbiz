@@ -16,6 +16,8 @@ use Filament\Tables\Table;
 
 class BusinessResource extends Resource
 {
+    protected static bool $isScopedToTenant = false;
+
     protected static ?string $model = Business::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;

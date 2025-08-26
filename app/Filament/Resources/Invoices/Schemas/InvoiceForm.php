@@ -10,6 +10,7 @@ use Filament\Schemas\Schema;
 use Filament\Forms\Components\Repeater;
 use Illuminate\Support\Str;
 use App\Models\ProductService; // Important for fetching product data
+use Filament\Facades\Filament;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Get;
@@ -22,19 +23,19 @@ class InvoiceForm
     {
         return $schema
             ->components([
-                Grid::make(2)
+                Grid::make(1)
                     ->schema([
                         Select::make('customer_id')
                             ->relationship('customer', 'display_name')
                             ->searchable()
                             ->preload()
                             ->required(),
+                    ]),
+                Grid::make(3)
+                    ->schema([
                         TextInput::make('invoice_number')
                             ->default('INV-' . random_int(1000, 9999))
                             ->required(),
-                    ]),
-                Grid::make(2)
-                    ->schema([
                         DatePicker::make('issue_date')
                             ->default(now())
                             ->required(),

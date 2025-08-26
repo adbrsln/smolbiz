@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Customers\Schemas;
 
+use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -13,9 +14,6 @@ class CustomerForm
     {
         return $schema
             ->components([
-                Select::make('business_id')
-                    ->relationship('business', 'name')
-                    ->required(),
                 TextInput::make('display_name')
                     ->required(),
                 TextInput::make('contact_name'),

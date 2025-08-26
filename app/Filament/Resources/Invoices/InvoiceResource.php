@@ -47,13 +47,5 @@ class InvoiceResource extends Resource
         ];
     }
 
-    protected static function mutateFormDataBeforeCreate(array $data): array
-    {
-        // Get the business ID from the authenticated user's business relationship
-        $data['business_id'] = auth()->user()->business->id;
-
-        return $data;
-    }
-
 
 }
