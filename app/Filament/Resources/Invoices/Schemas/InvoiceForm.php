@@ -29,7 +29,11 @@ class InvoiceForm
                             ->relationship('customer', 'display_name')
                             ->searchable()
                             ->preload()
-                            ->required(),
+                            ->required()
+                            ->createOptionForm([
+                                TextInput::make('display_name')
+                                    ->required()
+                            ]),
                     ]),
                 Grid::make(3)
                     ->schema([
@@ -66,7 +70,28 @@ class InvoiceForm
                                     })
                                     ->distinct()
                                     ->disableOptionsWhenSelectedInSiblingRepeaterItems()
-                                    ->columnSpan(2),
+                                    ->columnSpan(2)
+                                    ->createOptionForm([
+                                        TextInput::make('name')
+                                            ->required(),
+                                        TextInput::make('unit_price')
+                                            ->numeric()
+                                            ->prefix('MYR') // Change currency as needed
+                                            ->required(),
+                                    ])
+                                    ->createOptionUsing(function (array $data): int {
+                                        // Get the current business (tenant)
+                                        $tenant = Filament::getTenant();
+
+                                        // Add the business_id to the data before creating
+                                        $data['business_id'] = $tenant->id;
+
+                                        // Create the new ProductService
+                                        $product = ProductService::create($data);
+
+                                        // Return the ID of the newly created record
+                                        return $product->id;
+                                    }),
                                 Textarea::make('description')
                                     ->columnSpan(2),
                                 TextInput::make('quantity')
