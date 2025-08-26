@@ -8,6 +8,8 @@ use App\Filament\Resources\PaymentTerms\PaymentTermResource;
 use App\Filament\Resources\Payments\PaymentResource;
 use App\Filament\Resources\Invoices\InvoiceResource;
 use App\Filament\Resources\ProductServices\ProductServiceResource;
+use App\Filament\Widgets\BusinessStatsOverview;
+use App\Filament\Widgets\BusinessWelcomeWidget;
 use App\Http\Middleware\EnsureUserHasBusiness;
 use App\Models\Business;
 use Filament\Http\Middleware\Authenticate;
@@ -53,8 +55,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                AccountWidget::class,
-                // FilamentInfoWidget::class,
+                BusinessWelcomeWidget::class,
+                BusinessStatsOverview::class,
             ])
             ->tenantMiddleware([
                 EnsureUserHasBusiness::class,
