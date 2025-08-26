@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Filament\Resources\Payments\Schemas;
+
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Schemas\Schema;
+
+class PaymentForm
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Select::make('invoice_id')
+                    ->relationship('invoice', 'id')
+                    ->required(),
+                Select::make('business_id')
+                    ->relationship('business', 'name')
+                    ->required(),
+                DatePicker::make('payment_date')
+                    ->required(),
+                TextInput::make('amount')
+                    ->required()
+                    ->numeric(),
+                TextInput::make('payment_method')
+                    ->required(),
+                TextInput::make('transaction_id'),
+                Textarea::make('notes')
+                    ->columnSpanFull(),
+            ]);
+    }
+}

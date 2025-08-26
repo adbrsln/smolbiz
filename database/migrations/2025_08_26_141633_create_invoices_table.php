@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('business_id')->constrained()->onDelete('cascade');
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
-            $table->foreignId('payment_term_id')->nullable()->constrained()->onDelete('set null'); // Overrides business default
+            // $table->foreignId('payment_term_id')->nullable()->constrained()->onDelete('set null'); // Overrides business default
 
             $table->string('invoice_number')->unique(); // Unique per invoice table, but can be made unique per business via validation
             $table->date('issue_date');
