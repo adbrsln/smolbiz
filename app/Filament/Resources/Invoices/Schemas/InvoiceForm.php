@@ -9,7 +9,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\Repeater;
 use Illuminate\Support\Str;
-use App\Models\ProductService; // Important for fetching product data
+use App\Models\ProductService;
 use Filament\Facades\Filament;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;

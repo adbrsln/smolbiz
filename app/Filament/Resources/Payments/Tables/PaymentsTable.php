@@ -16,8 +16,6 @@ class PaymentsTable
             ->columns([
                 TextColumn::make('invoice.id')
                     ->searchable(),
-                TextColumn::make('business.name')
-                    ->searchable(),
                 TextColumn::make('payment_date')
                     ->date()
                     ->sortable(),

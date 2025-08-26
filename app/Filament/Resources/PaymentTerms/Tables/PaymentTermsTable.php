@@ -14,8 +14,6 @@ class PaymentTermsTable
     {
         return $table
             ->columns([
-                TextColumn::make('business.name')
-                    ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('days')
