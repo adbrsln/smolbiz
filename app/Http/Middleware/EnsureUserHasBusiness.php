@@ -11,8 +11,7 @@ class EnsureUserHasBusiness
     public function handle(Request $request, Closure $next): Response
     {
         // The new route is in the 'management' panel
-        $businessCreateRoute = 'filament.management.resources.businesses.create';
-
+        $businessCreateRoute = 'filament.home.resources.businesses.create';
         if (auth()->user() && !auth()->user()->businesses()->exists() && !$request->routeIs($businessCreateRoute)) {
             return redirect()->route($businessCreateRoute);
         }

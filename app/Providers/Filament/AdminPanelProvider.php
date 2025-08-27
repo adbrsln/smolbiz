@@ -2,20 +2,11 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Pages\Dashboard;
-use App\Filament\Resources\Customers\CustomerResource;
-use App\Filament\Resources\PaymentTerms\PaymentTermResource;
-use App\Filament\Resources\Payments\PaymentResource;
-use App\Filament\Resources\Invoices\InvoiceResource;
-use App\Filament\Resources\ProductServices\ProductServiceResource;
-use App\Filament\Widgets\BusinessStatsOverview;
-use App\Filament\Widgets\BusinessWelcomeWidget;
-use App\Http\Middleware\EnsureUserHasBusiness;
-use App\Models\Business;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -34,32 +25,26 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->id('business')
-            ->path('business')
+            ->id('admin')
+            ->path('admin')
             ->login()
-            ->tenant(Business::class, slugAttribute: 'slug')
+            ->registration()
+            ->passwordReset()
+            ->emailVerification()
+            ->emailChangeVerification()
+            ->profile()
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
+            ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\Filament\Admin\Resources')
+            ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\Filament\Admin\Pages')
             ->pages([
                 Dashboard::class,
             ])
-            ->resources([
-                CustomerResource::class,
-                InvoiceResource::class,
-                PaymentResource::class,
-                PaymentTermResource::class,
-                ProductServiceResource::class,
-            ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
+            ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\Filament\Admin\Widgets')
             ->widgets([
-                BusinessWelcomeWidget::class,
-                BusinessStatsOverview::class,
-            ])
-            ->tenantMiddleware([
-                EnsureUserHasBusiness::class,
+                AccountWidget::class,
+                FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

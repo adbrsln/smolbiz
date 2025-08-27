@@ -39,7 +39,7 @@ class BusinessesTable
                 ->color('gray')
                 ->url(
                     // This closure generates the URL for each row
-                    fn (Business $record): string => Filament::getPanel('business')->getUrl($record)
+                    fn (Business $record): string => Filament::getPanel('tenant')->getUrl($record)
                 ),
                 EditAction::make(),
             ])

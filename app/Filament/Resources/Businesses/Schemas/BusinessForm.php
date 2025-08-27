@@ -13,10 +13,6 @@ class BusinessForm
     {
         return $schema
             ->components([
-                Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->required()
-                    ->default(auth()->id()),
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('legal_name'),

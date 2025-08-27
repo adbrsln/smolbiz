@@ -19,10 +19,7 @@ return new class extends Migration
             $table->text('description'); // Can override product/service description
             $table->decimal('quantity', 10, 2);
             $table->decimal('unit_price', 10, 2);
-            $table->decimal('subtotal', 10, 2); // quantity * unit_price
             $table->decimal('tax_rate', 5, 4)->default(0.00); // e.g., 0.05 for 5%
-            $table->decimal('tax_amount', 10, 2)->default(0.00);
-            $table->decimal('total_amount', 10, 2); // subtotal + tax_amount
             $table->timestamps();
         });
     }

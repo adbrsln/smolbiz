@@ -47,5 +47,5 @@ class CustomerResource extends Resource
         ];
     }
 
-    
+
 }

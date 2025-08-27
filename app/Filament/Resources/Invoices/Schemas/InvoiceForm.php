@@ -51,7 +51,7 @@ class InvoiceForm
                 Section::make('Items')
                     ->schema([
                         Repeater::make('items')
-                            ->relationship()
+                            ->relationship('items')
                             ->schema([
                                 Select::make('product_service_id')
                                     ->label('Item')
@@ -91,9 +91,11 @@ class InvoiceForm
 
                                         // Return the ID of the newly created record
                                         return $product->id;
-                                    }),
+                                    })
+
+                                    ->required(),
                                 Textarea::make('description')
-                                    ->columnSpan(2),
+                                    ->columnSpan(2)->required(),
                                 TextInput::make('quantity')
                                     ->numeric()
                                     ->default(1)

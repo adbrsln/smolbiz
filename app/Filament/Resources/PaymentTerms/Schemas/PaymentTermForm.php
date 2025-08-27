@@ -12,9 +12,6 @@ class PaymentTermForm
     {
         return $schema
             ->components([
-                Select::make('business_id')
-                    ->relationship('business', 'name')
-                    ->required(),
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('days')

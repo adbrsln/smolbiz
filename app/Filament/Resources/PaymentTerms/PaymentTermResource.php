@@ -37,6 +37,7 @@ class PaymentTermResource extends Resource
         ];
     }
 
+
     public static function getPages(): array
     {
         return [

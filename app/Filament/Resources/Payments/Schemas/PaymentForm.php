@@ -17,9 +17,6 @@ class PaymentForm
                 Select::make('invoice_id')
                     ->relationship('invoice', 'id')
                     ->required(),
-                Select::make('business_id')
-                    ->relationship('business', 'name')
-                    ->required(),
                 DatePicker::make('payment_date')
                     ->required(),
                 TextInput::make('amount')

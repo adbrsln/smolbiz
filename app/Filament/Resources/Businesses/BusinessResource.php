@@ -13,9 +13,11 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class BusinessResource extends Resource
 {
+
     protected static bool $isScopedToTenant = false;
 
     protected static ?string $model = Business::class;
@@ -39,12 +41,28 @@ class BusinessResource extends Resource
         ];
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('user_id', auth()->id());
+    }
+
     public static function getPages(): array
     {
         return [
             'index' => ListBusinesses::route('/'),
             'create' => CreateBusiness::route('/create'),
             'edit' => EditBusiness::route('/{record}/edit'),
+        ];
+    }
+
+    public function defineGates(): array
+    {
+        return [
+            'business.index' => __('Allows viewing the business list'),
+            'business.create' => __('Allows creating a new business'),
+            'business.update' => __('Allows updating a business'),
+            'business.delete' => __('Allows deleting a business'),
         ];
     }
 }
