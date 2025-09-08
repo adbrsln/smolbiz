@@ -26,7 +26,8 @@ SmolBiz is a lightweight application designed to help small businesses efficient
 
 2.  **Install dependencies:**
 
-    ```bash    cp .env.example .env
+    ```bash    
+    cp .env.example .env
     ```
 
 4.  **Generate application key:**
