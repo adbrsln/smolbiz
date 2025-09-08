@@ -9,6 +9,7 @@ use App\Filament\Resources\ProductServices\Schemas\ProductServiceForm;
 use App\Filament\Resources\ProductServices\Tables\ProductServicesTable;
 use App\Models\ProductService;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -19,6 +20,8 @@ class ProductServiceResource extends Resource
     protected static ?string $model = ProductService::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static string | UnitEnum | null $navigationGroup = 'Manage Business';
 
     public static function form(Schema $schema): Schema
     {

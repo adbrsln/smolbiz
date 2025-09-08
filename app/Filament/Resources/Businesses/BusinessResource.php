@@ -14,7 +14,7 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-
+use UnitEnum;
 class BusinessResource extends Resource
 {
 
@@ -23,7 +23,7 @@ class BusinessResource extends Resource
     protected static ?string $model = Business::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
+    protected static string | UnitEnum | null $navigationGroup = 'Manage Business';
     public static function form(Schema $schema): Schema
     {
         return BusinessForm::configure($schema);
