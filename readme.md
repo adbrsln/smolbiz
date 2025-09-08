@@ -13,14 +13,16 @@ SmolBiz is a lightweight application designed to help small businesses efficient
 ### Prerequisites
 
 *   [Node.js](https://nodejs.org/en/) (LTS version recommended)
-*   [npm](https://www.npmjs.com/) (usually comes with Node.js)
+*   [npm](https://www.npmjs.com/) (usually comes with Node.js)*   [Composer](https://getcomposer.org/)
+*   [PHP](https://www.php.net/downloads.php) (7.4 or higher recommended)
+*   [Laravel](https://laravel.com/docs/installation) (8.x or higher recommended)
 
 ### Installation
 
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/smolbiz.git
+    git clone https://github.com/adbrsln/smolbiz
     cd smolbiz
     ```
 
