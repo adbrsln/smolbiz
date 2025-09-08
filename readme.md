@@ -26,7 +26,26 @@ SmolBiz is a lightweight application designed to help small businesses efficient
 
 2.  **Install dependencies:**
 
+    ```bash    cp .env.example .env
+    ```
+
+4.  **Generate application key:**
+
     ```bash
+    php artisan key:generate
+    ```
+
+5.  **Run database migrations:**
+
+    ```bash
+    php artisan migrate
+    ```
+
+6.  **Install Composer dependencies:**
+
+    ```bash
+    composer install
+    
     npm install
     ```
 
@@ -35,10 +54,11 @@ SmolBiz is a lightweight application designed to help small businesses efficient
 To start the development server:
 
 ```bash
-npm start
+npm run prod
+php artisan serve
 ```
 
-This will typically open the application in your default web browser at `http://localhost:3000`.
+This will typically open the application in your default web browser at `http://localhost:8000`.
 
 ## Usage
 
