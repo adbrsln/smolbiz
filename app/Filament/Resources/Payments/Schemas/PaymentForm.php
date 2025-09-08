@@ -22,7 +22,14 @@ class PaymentForm
                 TextInput::make('amount')
                     ->required()
                     ->numeric(),
-                TextInput::make('payment_method')
+                Select::make('payment_method')
+                    ->options([
+                        'credit_card' => 'Credit Card',
+                        'bank_transfer' => 'Bank Transfer',
+                        'cash' => 'Cash',
+                        'check' => 'Check',
+                        'other' => 'Other',
+                    ])
                     ->required(),
                 TextInput::make('transaction_id'),
                 Textarea::make('notes')
