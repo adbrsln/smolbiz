@@ -29,7 +29,7 @@ class BusinessStatsOverview extends StatsOverviewWidget
                 ->description('All invoices created')
                 ->icon('heroicon-o-document-text'),
 
-            Stat::make('Total Unpaid', number_format($totalUnpaid, 2) . ' ' . $currency)
+            Stat::make('Total Unpaid', $currency . ' ' . number_format($totalUnpaid, 2))
                 ->description('Sum of sent & overdue invoices')
                 ->color('warning')
                 ->icon('heroicon-o-banknotes'),

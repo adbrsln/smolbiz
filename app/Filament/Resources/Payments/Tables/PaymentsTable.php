@@ -14,7 +14,7 @@ class PaymentsTable
     {
         return $table
             ->columns([
-                TextColumn::make('invoice.id')
+                TextColumn::make('invoice.invoice_number')
                     ->searchable(),
                 TextColumn::make('payment_date')
                     ->date()

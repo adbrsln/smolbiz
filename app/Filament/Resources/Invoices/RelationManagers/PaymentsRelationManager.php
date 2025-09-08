@@ -9,11 +9,12 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
-
+use Livewire\Attributes\On;
 
 class PaymentsRelationManager extends RelationManager
 {
     protected static string $relationship = 'payments';
+
 
     public function form(Schema $schema): Schema
     {
@@ -26,7 +27,7 @@ class PaymentsRelationManager extends RelationManager
     }
 
 
-    protected function getTableHeaderActions(): array
+    public function getTableHeaderActions(): array
     {
         return [
             CreateAction::make()

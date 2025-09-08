@@ -14,7 +14,7 @@ class InvoicesTable
     {
         return $table
             ->columns([
-                TextColumn::make('customer.id')
+                TextColumn::make('customer.display_name')
                     ->searchable(),
                 TextColumn::make('paymentTerm.name')
                     ->searchable(),
