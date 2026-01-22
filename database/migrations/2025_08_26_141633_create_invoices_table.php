@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -20,7 +19,7 @@ return new class extends Migration
             $table->string('invoice_number')->unique(); // Unique per invoice table, but can be made unique per business via validation
             $table->date('issue_date');
             $table->date('due_date');
-            $table->enum('status', ['draft', 'sent', 'paid', 'partially_paid', 'overdue', 'cancelled'])->default('draft');
+            $table->enum('status', ['approved', 'draft', 'sent', 'paid', 'partially_paid', 'overdue', 'cancelled'])->default('draft');
 
             $table->decimal('subtotal', 10, 2)->default(0.00);
             $table->decimal('tax_amount', 10, 2)->default(0.00);
